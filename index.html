@@ -35,6 +35,25 @@ body {
     padding:20px;
     z-index:10;
 }
+#photoSection {
+    display: none;
+    margin-top: 15px;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.lovePic {
+    width: 70%;          /* Smaller size */
+    max-width: 220px;    /* Prevent too large on big phones */
+    border-radius: 15px;
+    margin: 8px auto;
+    display: block;
+    box-shadow: 0 0 15px red;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
 
 #enterBtn {
     padding:18px 35px;
@@ -161,7 +180,10 @@ button {
 
 <div class="name">BECKY SHANTELL ❤️</div>
 
-<img src="1.jpg">
+<div id="photoSection">
+    <img src="1.jpg" class="lovePic">
+</div>
+
 
 
 <div class="typewriter" id="text"></div>
@@ -281,3 +303,4 @@ function shareWhatsApp(){
 
 </body>
 </html>
+
