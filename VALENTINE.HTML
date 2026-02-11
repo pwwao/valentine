@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Becky Shantell ❤️</title>
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin:0;
+    background:black;
+    color:white;
+    font-family: Georgia, serif;
+    text-align:center;
+    overflow-x:hidden;
+}
+
+/* INTRO SCREEN */
+#intro {
+    position:fixed;
+    inset:0;
+    background:black;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    z-index:10;
+}
+
+#enterBtn {
+    padding:18px 35px;
+    font-size:20px;
+    background:gold;
+    border:none;
+    border-radius:40px;
+    margin-top:20px;
+}
+
+/* MAIN CONTENT */
+.container {
+    padding:20px 15px 40px;
+    max-width:500px;
+    margin:auto;
+    display:none;
+}
+
+.name {
+    font-size:32px;
+    font-weight:bold;
+    color:gold;
+    text-shadow:0 0 20px gold;
+    animation:glow 2s infinite alternate;
+    margin-bottom:10px;
+}
+
+@keyframes glow {
+    from { text-shadow:0 0 10px gold; }
+    to { text-shadow:0 0 35px gold; }
+}
+
+img {
+    width:100%;
+    height:auto;
+    border-radius:18px;
+    margin:8px 0;
+    box-shadow:0 0 20px red;
+}
+
+.typewriter {
+    font-size:17px;
+    margin:20px 0;
+    min-height:90px;
+    padding:0 5px;
+}
+
+h2 {
+    font-size:20px;
+    margin:15px 0;
+}
+
+button {
+    width:100%;
+    padding:16px;
+    border-radius:40px;
+    border:none;
+    margin:8px 0;
+    font-size:18px;
+}
+
+.yes { background:gold; color:black; font-weight:bold; }
+.no { background:darkred; color:white; }
+
+.share-btn {
+    background:white;
+    color:black;
+}
+
+#shareSection {
+    display:none;
+    margin-top:15px;
+}
+
+/* Falling roses */
+.rose {
+    position:fixed;
+    top:-10px;
+    font-size:22px;
+    animation:fall linear infinite;
+}
+
+@keyframes fall {
+    to { transform:translateY(110vh); }
+}
+
+/* Screen shake */
+@keyframes shake {
+    0% { transform:translate(0); }
+    25% { transform:translate(-3px,3px); }
+    50% { transform:translate(3px,-3px); }
+    75% { transform:translate(-3px,-3px); }
+    100% { transform:translate(0); }
+}
+
+.shake { animation:shake 0.4s; }
+
+#ring {
+    font-size:55px;
+    display:none;
+    margin:10px 0;
+    animation:pop 0.6s ease forwards;
+}
+
+@keyframes pop {
+    from { transform:scale(0); }
+    to { transform:scale(1.2); }
+}
+</style>
+</head>
+
+<body>
+
+<div id="intro">
+    <h1 style="font-size:22px;">A Love Story Is About To Begin...</h1>
+    <button id="enterBtn" onclick="startExperience()">Enter ❤️</button>
+</div>
+
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_9f0c2a1f50.mp3">
+</audio>
+
+<div class="container" id="mainContent">
+
+<div class="name">BECKY SHANTELL ❤️</div>
+
+<img src="1.jpg">
+
+
+<div class="typewriter" id="text"></div>
+
+<h2>Will You Be My Valentine? 💍</h2>
+
+<div id="ring">💍</div>
+
+<button class="yes" onclick="sayYes()">YES ❤️</button>
+<button class="no" onclick="moveNo(this)">NO 😅</button>
+
+<div id="shareSection">
+<button class="share-btn" onclick="downloadPage()">📸 Save This Moment</button>
+<button class="share-btn" onclick="shareWhatsApp()">📲 Share Our Love</button>
+</div>
+
+</div>
+
+<script>
+function startExperience(){
+    document.getElementById("intro").style.display="none";
+    document.getElementById("mainContent").style.display="block";
+    document.getElementById("music").play();
+    createRoses();
+    typeWriter();
+}
+
+// Typewriter
+const message="From the moment I met you, my heart knew. You are my happiness, my peace, my forever. Becky Shantell... will you be mine?";
+let i=0;
+function typeWriter(){
+    if(i<message.length){
+        document.getElementById("text").innerHTML+=message.charAt(i);
+        i++;
+        setTimeout(typeWriter,35);
+    }
+}
+
+// Roses
+function createRoses(){
+    setInterval(()=>{
+        const rose=document.createElement("div");
+        rose.classList.add("rose");
+        rose.innerHTML="🌹";
+        rose.style.left=Math.random()*100+"vw";
+        rose.style.animationDuration=(Math.random()*3+3)+"s";
+        document.body.appendChild(rose);
+        setTimeout(()=>rose.remove(),6000);
+    },400);
+}
+
+// YES
+function sayYes(){
+
+    // 📳 HEARTBEAT VIBRATION PATTERN
+    if (navigator.vibrate) {
+        navigator.vibrate([120, 80, 120, 300, 200, 80, 300]);
+    }
+
+    // 💥 Screen Shake
+    document.body.classList.add("shake");
+    setTimeout(() => {
+        document.body.classList.remove("shake");
+    }, 500);
+
+    // 🎵 Boost Music Volume Dramatically
+    const music = document.getElementById("music");
+    music.volume = 1.0;
+
+    // 🎆 First Fireworks Explosion
+    confetti({
+        particleCount: 300,
+        spread: 120,
+        origin: { y: 0.6 }
+    });
+
+    // 💍 Show Ring
+    const ring = document.getElementById("ring");
+    ring.style.display = "block";
+
+    // 🎇 Second Confetti Burst (Delayed)
+    setTimeout(() => {
+        confetti({
+            particleCount: 200,
+            spread: 180,
+            origin: { y: 0.4 }
+        });
+    }, 1000);
+
+    // 📸 Show Share Buttons
+    document.getElementById("shareSection").style.display = "block";
+}
+
+// NO
+function moveNo(btn){
+    btn.style.position="fixed";
+    btn.style.top=Math.random()*70+"vh";
+    btn.style.left=Math.random()*70+"vw";
+}
+
+// Download
+function downloadPage(){
+    html2canvas(document.querySelector("#mainContent")).then(canvas=>{
+        let link=document.createElement("a");
+        link.download="Becky_Shantell_Valentine.png";
+        link.href=canvas.toDataURL();
+        link.click();
+    });
+}
+
+// WhatsApp
+function shareWhatsApp(){
+    let text="I said YES to being your Valentine ❤️ - Becky Shantell";
+    window.open("https://wa.me/?text="+encodeURIComponent(text));
+}
+</script>
+
+</body>
+</html>
